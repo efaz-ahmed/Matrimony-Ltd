@@ -1,0 +1,15 @@
+# Internal — never commit
+docs/
+matrimony_website_brief.md
+.superpowers/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
+*.swo
