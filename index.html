@@ -1058,17 +1058,29 @@
   .benefits-grid {
     display: grid;
     grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    align-self: start;
     gap: 1px;
     background: rgba(232, 196, 176, 0.15);
     border: 1px solid rgba(232, 196, 176, 0.15);
   }
   .benefit {
-    padding: 1.5rem;
+    padding: 2.28rem 1.5rem;
     background: var(--ink-deep);
     display: flex;
     gap: 1.25rem;
     align-items: start;
     transition: background 0.3s ease;
+  }
+  .benefits-column { display: flex; flex-direction: column; align-self: start; }
+  .benefits-label {
+    font-family: var(--body);
+    font-size: 1.44rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--blush);
+    margin-bottom: 0.95rem;
   }
   .benefit:hover { background: var(--ink); }
   .benefit .icon {
@@ -2063,26 +2075,14 @@
         </p>
       </div>
 
-      <div class="benefits-grid">
+      <div class="benefits-column">
+        <span class="benefits-label">Shareholder Benefits</span>
+        <div class="benefits-grid">
         <div class="benefit">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div>
             <h4>Annual Dividend</h4>
             <p>Investors receive an annual dividend extracted from company profits.</p>
-          </div>
-        </div>
-        <div class="benefit">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="2"/><circle cx="15" cy="15" r="2"/><path d="M3 21L21 3"/></svg></div>
-          <div>
-            <h4>Service Discounts</h4>
-            <p>3 shares = 10% discount; 5 shares = 20% discount on each Matrimony Manor wedding.</p>
-          </div>
-        </div>
-        <div class="benefit">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
-          <div>
-            <h4>Board Participation</h4>
-            <p>10+ shares offers a seat on the Board of Directors.</p>
           </div>
         </div>
         <div class="benefit">
@@ -2105,6 +2105,7 @@
             <h4>Priority Booking</h4>
             <p>Reservation privileges for all events at Matrimony Manor.</p>
           </div>
+        </div>
         </div>
       </div>
     </div>
