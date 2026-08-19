@@ -921,79 +921,263 @@
   }
 
   /* ========== SERVICES ========== */
-  .services-section { background: var(--cream); }
-  .services-header { text-align: center; margin-bottom: 4rem; }
-  .services-header h2 { max-width: 800px; margin: 1rem auto 1.25rem; }
+  .services-section {
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .services-section::before {
+    content: "";
+    position: absolute;
+    width: clamp(280px, 42vw, 640px);
+    aspect-ratio: 1;
+    top: -22%;
+    right: -16%;
+    border: 1px solid var(--line-rust);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .services-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 1;
+  }
+  .services-header h2 { max-width: 880px; margin-top: 1.25rem; }
   .services-header h2 em { color: var(--rust); font-style: italic; }
+  .services-intro { padding-bottom: 0.35rem; }
+  .services-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--line-rust);
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .services-availability::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rust);
+    box-shadow: 0 0 0 4px rgba(176, 83, 46, 0.12);
+  }
 
-  .services-grid {
+  .nikah-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
+    gap: clamp(1rem, 2.2vw, 2rem);
+    align-items: stretch;
+  }
+  .nikah-journey {
+    border: 1px solid var(--line-rust);
+    background: var(--cream-warm);
+    padding: clamp(2rem, 4vw, 4rem);
+  }
+  .nikah-journey h3 {
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+  .nikah-steps {
+    list-style: none;
+    counter-reset: nikah-step;
+  }
+  .nikah-step {
+    counter-increment: nikah-step;
+    display: grid;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .nikah-step::before {
+    content: "0" counter(nikah-step);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--rust);
+    padding-top: 0.15rem;
+  }
+  .nikah-step h4 {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    margin-bottom: 0.55rem;
+  }
+  .nikah-step p {
+    max-width: 55ch;
+    color: var(--warm-gray);
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .nikah-feature {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(2rem, 4vw, 4rem);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .nikah-feature::before,
+  .nikah-feature::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(232, 196, 176, 0.22);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
+  }
+  .nikah-feature::before {
+    width: 78%;
+    aspect-ratio: 0.78;
+    right: -22%;
+    bottom: -38%;
+  }
+  .nikah-feature::after {
+    width: 58%;
+    aspect-ratio: 0.72;
+    right: -12%;
+    bottom: -30%;
+  }
+  .nikah-feature .eyebrow { color: var(--blush); position: relative; z-index: 1; }
+  .nikah-feature h3 {
+    color: var(--cream);
+    font-size: clamp(2.35rem, 4.2vw, 4.5rem);
+    line-height: 0.96;
+    margin: 1.5rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  .nikah-feature h3 em { color: var(--blush); font-style: italic; }
+  .nikah-feature > p {
+    color: rgba(244, 236, 221, 0.76);
+    max-width: 43ch;
+    position: relative;
+    z-index: 1;
+  }
+  .nikah-facts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1px;
-    background: var(--line-rust);
-    border: 1px solid var(--line-rust);
-  }
-  .service-card {
-    background: var(--cream);
-    padding: clamp(2rem, 4vw, 3rem);
+    background: rgba(232, 196, 176, 0.2);
+    border: 1px solid rgba(232, 196, 176, 0.2);
+    margin-top: clamp(3rem, 8vw, 7rem);
     position: relative;
-    transition: background 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    min-height: 380px;
+    z-index: 1;
   }
-  .service-card:hover { background: var(--cream-warm); }
-  .service-card .num {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--rust);
+  .nikah-fact {
+    background: rgba(7, 9, 27, 0.68);
+    padding: 1.25rem;
   }
-  .service-card h3 {
-    font-size: clamp(1.65rem, 2.3vw, 2.15rem);
-    margin: 1.25rem 0 1rem;
-    letter-spacing: -0.01em;
-  }
-  .service-card h3 em { color: var(--rust); font-style: italic; }
-  .service-card p {
-    color: var(--charcoal);
-    margin-bottom: 1rem;
-    flex-grow: 1;
-    font-size: 0.95rem;
-  }
-  .service-card .meta {
-    font-size: 0.72rem;
+  .nikah-fact span {
+    display: block;
+    color: var(--blush);
+    font-size: 0.66rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 500;
-    color: var(--ink);
-    border-top: 1px solid var(--line);
-    padding-top: 1.25rem;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-bottom: 0.45rem;
   }
-  .service-card .meta .arrow {
-    width: 14px; height: 14px;
-    transition: transform 0.4s ease;
-  }
-  .service-card:hover .meta .arrow { transform: translateX(4px); }
-
-  .service-card.featured {
-    background: var(--ink);
+  .nikah-fact strong {
+    display: block;
     color: var(--cream);
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 400;
+    line-height: 1.1;
   }
-  .service-card.featured h3 { color: var(--cream); }
-  .service-card.featured h3 em { color: var(--blush); }
-  .service-card.featured p { color: rgba(244, 236, 221, 0.8); }
-  .service-card.featured .num { color: var(--blush); }
-  .service-card.featured .meta { border-color: rgba(232, 196, 176, 0.25); color: var(--blush); }
-  .service-card.featured:hover { background: var(--ink-soft); }
 
-  @media (max-width: 700px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { min-height: auto; }
+  .nikah-bonus {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    align-items: center;
+    padding: 1.5rem clamp(1.5rem, 3vw, 2.5rem);
+    margin-top: clamp(1rem, 2.2vw, 2rem);
+    background: var(--rust);
+    color: var(--cream);
+    border: 1px solid var(--rust-deep);
+  }
+  .nikah-bonus-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(244, 236, 221, 0.5);
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    white-space: nowrap;
+  }
+  .nikah-bonus p {
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+    line-height: 1.15;
+  }
+
+  .nikah-booking {
+    display: grid;
+    grid-template-columns: 1.05fr 0.7fr 1.25fr;
+    border: 1px solid var(--line-rust);
+    border-top: 0;
+    background: var(--cream-warm);
+  }
+  .nikah-booking-block {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-right: 1px solid var(--line-rust);
+  }
+  .nikah-booking-block:last-child { border-right: 0; }
+  .nikah-booking-block h4 {
+    font-size: 1.35rem;
+    margin-bottom: 0.6rem;
+  }
+  .nikah-booking-block p,
+  .nikah-booking-block a {
+    color: var(--warm-gray);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .nikah-booking-block strong { color: var(--charcoal); font-weight: 600; }
+  .nikah-booking-links a {
+    display: block;
+    transition: color 0.25s ease;
+  }
+  .nikah-booking-links a:hover { color: var(--rust); }
+
+  @media (max-width: 900px) {
+    .services-header,
+    .nikah-grid { grid-template-columns: 1fr; }
+    .services-intro { max-width: 60ch; }
+    .nikah-booking { grid-template-columns: 1fr 1fr; }
+    .nikah-booking-block:last-child {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--line-rust);
+    }
+    .nikah-booking-block:nth-child(2) { border-right: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .nikah-step { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 0.75rem; }
+    .nikah-bonus { grid-template-columns: 1fr; }
+    .nikah-bonus-label { justify-self: start; }
+    .nikah-booking { grid-template-columns: 1fr; }
+    .nikah-booking-block,
+    .nikah-booking-block:nth-child(2) {
+      border-right: 0;
+      border-bottom: 1px solid var(--line-rust);
+    }
+    .nikah-booking-block:last-child {
+      grid-column: auto;
+      border-top: 0;
+      border-bottom: 0;
+    }
   }
 
   /* ========== INVESTOR (deep night) ========== */
@@ -1742,7 +1926,7 @@
 
     <ul class="nav-links">
       <li><a href="#manor">Matrimony Manor</a></li>
-      <li><a href="#services" class="has-drop">Services
+      <li><a href="#services" class="has-drop">Islamic Marriage
         <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
       </a></li>
       <li><a href="#projects">Partnerships</a></li>
@@ -1769,7 +1953,7 @@
 <aside class="mobile-drawer">
   <ul>
     <li><a href="#manor">Matrimony Manor</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="#services">Islamic Marriage</a></li>
     <li><a href="#investor">Investors</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#team">Team</a></li>
@@ -2012,37 +2196,80 @@
 <section id="services" class="services-section" data-anim>
   <div class="container">
     <div class="services-header">
-      <span class="eyebrow center">Complete Wedding Support</span>
-      <h2 class="display-lg">A complete <em>wedding</em> experience.</h2>
-      <p class="lead" style="margin: 0 auto;">Complementary services tailored to make each wedding unique, streamlined and memorable, from the spiritual to the everyday.</p>
+      <div>
+        <span class="eyebrow">Matrimonial Nikah</span>
+        <h2 class="display-lg">Begin your union with <em>clarity</em> and faith.</h2>
+      </div>
+      <div class="services-intro">
+        <p class="lead">Our Aqd An-Nikah Service guides couples through a meaningful Islamic marriage ceremony with care, confidence and the right preparation.</p>
+        <span class="services-availability">Available 7 Days a Week</span>
+      </div>
     </div>
 
-    <div class="services-grid">
-      <article class="service-card featured">
-        <span class="num">i.</span>
-        <h3>Pre-Marriage<br/><em>Fiqh Course</em></h3>
-        <p>"Closer Than A Garment" is a private course covering Islamic family life, marital rights, spouse selection, family planning and shared relationship goals. Delivered in person or virtually.</p>
+    <div class="nikah-grid">
+      <article class="nikah-journey">
+        <h3>What we offer</h3>
+        <ol class="nikah-steps">
+          <li class="nikah-step">
+            <div>
+              <h4>Start with Clarity</h4>
+              <p>Our pre-Nikah consultation explains the process, procedure and everything you need to prepare.</p>
+            </div>
+          </li>
+          <li class="nikah-step">
+            <div>
+              <h4>Celebrate with Blessings</h4>
+              <p>A meaningful Aqd An-Nikah ceremony conducted by our Imam, including an Islamic sermon.</p>
+            </div>
+          </li>
+          <li class="nikah-step">
+            <div>
+              <h4>Certified for Your Records</h4>
+              <p>Full Nikah certification is provided after the ceremony for your personal records.</p>
+            </div>
+          </li>
+        </ol>
       </article>
 
-      <article class="service-card">
-        <span class="num">ii.</span>
-        <h3>Islamic Marriage<br/><em>Contract Signing</em></h3>
-        <p>Aqd An-Nikah service led by qualified Imams who guide couples through Ijab, Qabool and certification. The five conditions of a valid contract are observed throughout.</p>
-      </article>
-
-      <article class="service-card">
-        <span class="num">iii.</span>
-        <h3>Wedding Cake<br/><em>Service</em></h3>
-        <p>Bespoke cakes crafted with high-quality ingredients, in traditional or modern designs, tailored to the couple's preferences. The centrepiece of an unforgettable celebration.</p>
-      </article>
-
-      <article class="service-card featured">
-        <span class="num">iv.</span>
-        <h3>Chauffeur<br/><em>Service</em></h3>
-        <p>Luxury transport for the couple and guests on the wedding day, designed to make the celebration smoother, more seamless and more elegant from arrival to farewell.</p>
-      </article>
+      <aside class="nikah-feature">
+        <div>
+          <span class="eyebrow">Aqd An-Nikah Service</span>
+          <h3>A blessed beginning, <em>thoughtfully</em> guided.</h3>
+          <p>Welcoming families to our London office for a simple, meaningful and blessed Nikah experience.</p>
+        </div>
+        <div class="nikah-facts">
+          <div class="nikah-fact">
+            <span>Availability</span>
+            <strong>Seven days</strong>
+          </div>
+          <div class="nikah-fact">
+            <span>Capacity</span>
+            <strong>Up to 40 people</strong>
+          </div>
+        </div>
+      </aside>
     </div>
 
+    <div class="nikah-bonus">
+      <span class="nikah-bonus-label">Included with booking</span>
+      <p>Free Pre-Marriage Fiqh Course for couples</p>
+    </div>
+
+    <div class="nikah-booking">
+      <div class="nikah-booking-block">
+        <h4>Location</h4>
+        <p><strong>68 Kingsgate Rd, London NW6 4TE</strong><br/>Segregated facilities for women</p>
+      </div>
+      <div class="nikah-booking-block">
+        <h4>Capacity</h4>
+        <p><strong>Up to 40 people</strong><br/>A welcoming, intimate setting</p>
+      </div>
+      <div class="nikah-booking-block nikah-booking-links">
+        <h4>Get in touch to book</h4>
+        <a href="tel:+447403947027"><strong>Phone:</strong> 07403 947027</a>
+        <a href="mailto:nikah@matrimonyltd.com"><strong>Email:</strong> nikah@matrimonyltd.com</a>
+      </div>
+    </div>
   </div>
 </section>
 
