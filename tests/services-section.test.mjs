@@ -37,3 +37,27 @@ test("the Services section presents the complete Matrimonial Nikah offer", () =>
   assert.match(section, /href=["']tel:\+447403947027["']/i);
   assert.match(section, /href=["']mailto:nikah@matrimonyltd\.com["']/i);
 });
+
+test("desktop and mobile navigation identify the Services destination as Islamic Marriage", () => {
+  const desktopNav = html.match(/<ul\s+class=["']nav-links["'][^>]*>([\s\S]*?)<\/ul>/i);
+  const mobileNav = html.match(/<aside\s+class=["']mobile-drawer["'][^>]*>([\s\S]*?)<\/aside>/i);
+
+  assert.ok(desktopNav, "Expected the page to contain desktop navigation");
+  assert.ok(mobileNav, "Expected the page to contain mobile navigation");
+
+  for (const [name, navigation] of [
+    ["desktop", desktopNav[0]],
+    ["mobile", mobileNav[0]],
+  ]) {
+    const servicesLink = navigation.match(
+      /<a\b[^>]*href=["']#services["'][^>]*>([\s\S]*?)<\/a>/i,
+    );
+    assert.ok(servicesLink, `Expected ${name} navigation to link to #services`);
+
+    const accessibleName = servicesLink[1]
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    assert.equal(accessibleName, "Islamic Marriage");
+  }
+});
