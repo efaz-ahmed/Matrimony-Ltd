@@ -947,6 +947,36 @@
   }
   .services-header h2 { max-width: 880px; margin-top: 1.25rem; }
   .services-header h2 em { color: var(--rust); font-style: italic; }
+  .services-flyer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--line-rust);
+    color: var(--rust);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    line-height: 1.45;
+    text-transform: uppercase;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .services-flyer-link svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    transition: transform 0.3s ease;
+  }
+  .services-flyer-link:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .services-flyer-link:hover svg { transform: translate(2px, -2px); }
+  .services-flyer-link:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 5px;
+  }
   .services-intro { padding-bottom: 0.35rem; }
   .services-availability {
     display: inline-flex;
@@ -1150,6 +1180,126 @@
     transition: color 0.25s ease;
   }
   .nikah-booking-links a:hover { color: var(--rust); }
+
+  body.flyer-open { overflow: hidden; }
+  .flyer-dialog {
+    width: min(94vw, 1100px);
+    max-width: none;
+    height: 92vh;
+    max-height: 92vh;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(232, 196, 176, 0.42);
+    background: var(--cream);
+    color: var(--charcoal);
+    box-shadow: 0 35px 100px rgba(7, 9, 27, 0.55);
+  }
+  .flyer-dialog::backdrop {
+    background: rgba(7, 9, 27, 0.86);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .flyer-dialog-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .flyer-dialog-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem clamp(1rem, 2.5vw, 1.75rem);
+    background: var(--ink);
+    color: var(--cream);
+    border-bottom: 1px solid rgba(232, 196, 176, 0.24);
+  }
+  .flyer-dialog-title {
+    color: var(--cream);
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+  .flyer-dialog-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 0 0 auto;
+  }
+  .flyer-dialog-controls button {
+    width: 2.35rem;
+    height: 2.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(232, 196, 176, 0.35);
+    border-radius: 50%;
+    color: var(--cream);
+    font-size: 1.05rem;
+    line-height: 1;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .flyer-dialog-controls button:hover {
+    background: var(--blush);
+    border-color: var(--blush);
+    color: var(--ink);
+  }
+  .flyer-dialog-controls button:focus-visible {
+    outline: 2px solid var(--blush);
+    outline-offset: 2px;
+  }
+  .flyer-dialog-controls button:disabled { opacity: 0.35; cursor: default; }
+  .flyer-dialog-controls button:disabled:hover {
+    background: transparent;
+    border-color: rgba(232, 196, 176, 0.35);
+    color: var(--cream);
+  }
+  .flyer-zoom-value {
+    min-width: 3.5rem;
+    color: var(--blush);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+  .flyer-close { margin-left: 0.35rem; }
+  .flyer-close svg { width: 15px; height: 15px; }
+  .flyer-viewer {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+    background: var(--cream-warm);
+    overscroll-behavior: contain;
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+  .flyer-viewer img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: 0 18px 55px rgba(7, 9, 27, 0.24);
+    transition: width 0.25s ease;
+  }
+
+  @media (max-width: 600px) {
+    .flyer-dialog { width: 100vw; height: 100dvh; max-height: 100dvh; border: 0; }
+    .flyer-dialog-toolbar { align-items: flex-start; }
+    .flyer-dialog-title { max-width: 11rem; padding-top: 0.5rem; }
+    .flyer-dialog-controls { gap: 0.25rem; }
+    .flyer-dialog-controls button { width: 2.15rem; height: 2.15rem; }
+    .flyer-zoom-value { min-width: 3rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-flyer-link,
+    .services-flyer-link svg,
+    .flyer-dialog-controls button,
+    .flyer-viewer img { transition: none; }
+  }
 
   @media (max-width: 900px) {
     .services-header,
@@ -2199,6 +2349,10 @@
       <div>
         <span class="eyebrow">Matrimonial Nikah</span>
         <h2 class="display-lg">Begin your union with <em>clarity</em> and faith.</h2>
+        <a class="services-flyer-link" href="Matrimonial%20Nikah%20(Matrimony%20Ltd).jpg" data-flyer-open aria-haspopup="dialog" aria-controls="nikah-flyer-dialog">
+          Matrimonial Nikah (Matrimony Ltd) Flyer
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg>
+        </a>
       </div>
       <div class="services-intro">
         <p class="lead">Our Aqd An-Nikah Service guides couples through a meaningful Islamic marriage ceremony with care, confidence and the right preparation.</p>
@@ -2272,6 +2426,25 @@
     </div>
   </div>
 </section>
+
+<dialog id="nikah-flyer-dialog" class="flyer-dialog" aria-labelledby="nikah-flyer-title">
+  <div class="flyer-dialog-shell">
+    <div class="flyer-dialog-toolbar">
+      <h2 id="nikah-flyer-title" class="flyer-dialog-title">Matrimonial Nikah (Matrimony Ltd) Flyer</h2>
+      <div class="flyer-dialog-controls" aria-label="Flyer controls">
+        <button type="button" data-flyer-zoom-out aria-label="Zoom out">−</button>
+        <span class="flyer-zoom-value" data-flyer-zoom-value aria-live="polite">100%</span>
+        <button type="button" data-flyer-zoom-in aria-label="Zoom in">+</button>
+        <button type="button" class="flyer-close" data-flyer-close aria-label="Close flyer">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="flyer-viewer" data-flyer-viewer>
+      <img src="Matrimonial%20Nikah%20(Matrimony%20Ltd).jpg" alt="Matrimonial Nikah service flyer with booking, location and ceremony information" data-flyer-image />
+    </div>
+  </div>
+</dialog>
 
 <!-- ============ INVESTOR ============ -->
 <section id="investor" class="investor-section" data-anim>
@@ -2794,6 +2967,65 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+
+  // Matrimonial Nikah flyer modal
+  const flyerOpen = document.querySelector('[data-flyer-open]');
+  const flyerDialog = document.querySelector('#nikah-flyer-dialog');
+
+  if (flyerOpen && flyerDialog) {
+    const flyerClose = flyerDialog.querySelector('[data-flyer-close]');
+    const flyerZoomIn = flyerDialog.querySelector('[data-flyer-zoom-in]');
+    const flyerZoomOut = flyerDialog.querySelector('[data-flyer-zoom-out]');
+    const flyerZoomValue = flyerDialog.querySelector('[data-flyer-zoom-value]');
+    const flyerImage = flyerDialog.querySelector('[data-flyer-image]');
+    const flyerViewer = flyerDialog.querySelector('[data-flyer-viewer]');
+    const minZoom = 75;
+    const maxZoom = 225;
+    const zoomStep = 25;
+    let flyerZoom = 100;
+
+    const updateFlyerZoom = () => {
+      flyerImage.style.width = `${flyerZoom}%`;
+      flyerZoomValue.textContent = `${flyerZoom}%`;
+      flyerZoomOut.disabled = flyerZoom === minZoom;
+      flyerZoomIn.disabled = flyerZoom === maxZoom;
+    };
+
+    const closeFlyer = () => {
+      if (typeof flyerDialog.close === 'function') flyerDialog.close();
+      else flyerDialog.removeAttribute('open');
+      document.body.classList.remove('flyer-open');
+    };
+
+    flyerOpen.addEventListener('click', event => {
+      event.preventDefault();
+      flyerZoom = 100;
+      updateFlyerZoom();
+      flyerViewer.scrollTo({ top: 0, left: 0 });
+      if (typeof flyerDialog.showModal === 'function') flyerDialog.showModal();
+      else flyerDialog.setAttribute('open', '');
+      document.body.classList.add('flyer-open');
+      flyerClose.focus();
+    });
+
+    flyerClose.addEventListener('click', closeFlyer);
+    flyerZoomIn.addEventListener('click', () => {
+      flyerZoom = Math.min(maxZoom, flyerZoom + zoomStep);
+      updateFlyerZoom();
+    });
+    flyerZoomOut.addEventListener('click', () => {
+      flyerZoom = Math.max(minZoom, flyerZoom - zoomStep);
+      updateFlyerZoom();
+    });
+    flyerDialog.addEventListener('click', event => {
+      if (event.target === flyerDialog) closeFlyer();
+    });
+    flyerDialog.addEventListener('close', () => {
+      document.body.classList.remove('flyer-open');
+    });
+
+    updateFlyerZoom();
+  }
 </script>
 
 </body>
