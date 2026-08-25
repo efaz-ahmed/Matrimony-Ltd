@@ -61,3 +61,26 @@ test("desktop and mobile navigation identify the Services destination as Islamic
     assert.equal(accessibleName, "Islamic Marriage");
   }
 });
+
+test("the flyer control opens the local high-resolution image in an accessible modal", () => {
+  assert.ok(servicesMatch, "Expected the page to contain a #services section");
+
+  const flyerLink = servicesMatch[0].match(
+    /<a\b[^>]*class=["'][^"']*services-flyer-link[^"']*["'][^>]*>[\s\S]*?<\/a>/i,
+  );
+  assert.ok(flyerLink, "Expected a styled flyer link beneath the Services title");
+  assert.match(flyerLink[0], /href=["']Matrimonial%20Nikah%20\(Matrimony%20Ltd\)\.jpg["']/i);
+  assert.match(flyerLink[0], /aria-controls=["']nikah-flyer-dialog["']/i);
+  assert.match(flyerLink[0], /aria-haspopup=["']dialog["']/i);
+  assert.match(flyerLink[0], /Matrimonial Nikah \(Matrimony Ltd\) Flyer/i);
+  assert.doesNotMatch(flyerLink[0], /target=["']_blank["']/i);
+
+  const dialog = html.match(
+    /<dialog\b[^>]*id=["']nikah-flyer-dialog["'][^>]*>[\s\S]*?<\/dialog>/i,
+  );
+  assert.ok(dialog, "Expected a flyer dialog in the delivered page");
+  assert.match(dialog[0], /src=["']Matrimonial%20Nikah%20\(Matrimony%20Ltd\)\.jpg["']/i);
+  assert.match(dialog[0], /data-flyer-zoom-in/i);
+  assert.match(dialog[0], /data-flyer-zoom-out/i);
+  assert.match(dialog[0], /data-flyer-close/i);
+});
