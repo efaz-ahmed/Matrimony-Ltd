@@ -38,7 +38,7 @@ test("the Services section presents the complete Matrimonial Nikah offer", () =>
   assert.match(section, /href=["']mailto:nikah@matrimonyltd\.com["']/i);
 });
 
-test("desktop and mobile navigation identify the Services destination as Islamic Marriage", () => {
+test("desktop and mobile navigation identify the Services destination as Complimentary Services", () => {
   const desktopNav = html.match(/<ul\s+class=["']nav-links["'][^>]*>([\s\S]*?)<\/ul>/i);
   const mobileNav = html.match(/<aside\s+class=["']mobile-drawer["'][^>]*>([\s\S]*?)<\/aside>/i);
 
@@ -58,7 +58,7 @@ test("desktop and mobile navigation identify the Services destination as Islamic
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ")
       .trim();
-    assert.equal(accessibleName, "Islamic Marriage");
+    assert.equal(accessibleName, "Complimentary Services");
   }
 });
 
