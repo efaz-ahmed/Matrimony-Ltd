@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Matrimony Ltd | Where Forever Begins | Muslim Wedding Hall & Halal Ventures</title>
-<meta name="description" content="Matrimony Manor: a future-enchanting Muslim wedding hall, complementary services, and halal investment opportunities. Where Forever Begins." />
+<meta name="description" content="Discover Matrimony Ltd, Matrimony Manor, our complimentary wedding services, future halal ventures and ethical investment opportunities." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -147,6 +147,7 @@
   }
 
   section { padding: clamp(4rem, 9vw, 9rem) 0; position: relative; }
+  section[id] { scroll-margin-top: 88px; }
 
   /* Sunset gradient stripe */
   .sunset-stripe {
@@ -281,12 +282,12 @@
 
   .nav-links {
     display: flex;
-    gap: 2.25rem;
+    gap: clamp(1rem, 1.5vw, 2.25rem);
     list-style: none;
     align-items: center;
   }
   .nav-links a {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 400;
     color: var(--charcoal);
     transition: color 0.25s ease;
@@ -1001,6 +1002,68 @@
     box-shadow: 0 0 0 4px rgba(176, 83, 46, 0.12);
   }
 
+  .complimentary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    margin: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3.5rem, 7vw, 6rem);
+    background: var(--line-rust);
+    border-top: 1px solid var(--line-rust);
+    border-bottom: 1px solid var(--line-rust);
+    position: relative;
+    z-index: 1;
+  }
+  .complimentary-card {
+    min-height: 250px;
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+    background: var(--cream);
+  }
+  .complimentary-card:first-child,
+  .complimentary-card:nth-child(3) { background: var(--cream-warm); }
+  .complimentary-card .num {
+    display: block;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    color: var(--rust);
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-style: italic;
+  }
+  .complimentary-card h3 {
+    margin-bottom: 0.85rem;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.45rem, 2vw, 1.85rem);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+  .complimentary-card p {
+    color: var(--warm-grey);
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+  .nikah-detail-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    position: relative;
+    z-index: 1;
+  }
+  .nikah-detail-heading h3 {
+    max-width: 760px;
+    margin-top: 1rem;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+  .nikah-detail-heading h3 em { color: var(--rust); font-style: italic; }
+  .nikah-detail-copy { padding-bottom: 0.3rem; }
+  .nikah-detail-copy p { color: var(--warm-grey); line-height: 1.8; }
+
   .nikah-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
@@ -1303,8 +1366,10 @@
 
   @media (max-width: 900px) {
     .services-header,
-    .nikah-grid { grid-template-columns: 1fr; }
+    .nikah-grid,
+    .nikah-detail-heading { grid-template-columns: 1fr; }
     .services-intro { max-width: 60ch; }
+    .complimentary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .nikah-booking { grid-template-columns: 1fr 1fr; }
     .nikah-booking-block:last-child {
       grid-column: 1 / -1;
@@ -1314,6 +1379,9 @@
   }
 
   @media (max-width: 600px) {
+    .complimentary-grid { grid-template-columns: 1fr; }
+    .complimentary-card { min-height: 0; }
+    .complimentary-card .num { margin-bottom: 2rem; }
     .nikah-step { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 0.75rem; }
     .nikah-bonus { grid-template-columns: 1fr; }
     .nikah-bonus-label { justify-self: start; }
@@ -2075,15 +2143,11 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="#manor">Matrimony Manor</a></li>
-      <li><a href="#services" class="has-drop">Islamic Marriage
-        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-      </a></li>
-      <li><a href="#projects">Partnerships</a></li>
-      <li><a href="#investor" class="has-drop">Investors
-        <svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 8L2 4h8z"/></svg>
-      </a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#manor">Matrimony Manor</a></li>
+      <li><a href="#services">Complimentary Services</a></li>
+      <li><a href="#future-ventures">Future Ventures</a></li>
+      <li><a href="#investor">Investors</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#faq">FAQs</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -2102,10 +2166,11 @@
 
 <aside class="mobile-drawer">
   <ul>
-    <li><a href="#manor">Matrimony Manor</a></li>
-    <li><a href="#services">Islamic Marriage</a></li>
-    <li><a href="#investor">Investors</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#manor">Matrimony Manor</a></li>
+    <li><a href="#services">Complimentary Services</a></li>
+    <li><a href="#future-ventures">Future Ventures</a></li>
+    <li><a href="#investor">Investors</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#faq">FAQs</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -2213,10 +2278,13 @@
 
       <div class="intro-body">
         <p>
-          Matrimony Ltd has a vision of embracing diverse halal ventures. Its biggest project is a <em>state-of-the-art</em> function hall known as Matrimony Manor, alongside a range of complementary services designed to create a complete wedding experience.
+          Matrimony Ltd grew from the vision and community-focused work of <strong>New Vision Housing</strong>. It is an extension of that journey while operating as a separate company, with its own purpose, direction and commitment to responsible enterprise.
         </p>
         <p>
-          The company is also seeking investors with ethical principles to support its mission of revolutionising halal investment. Two journeys, one purpose: building meaningful, community-focused ventures rooted in trust and faith.
+          Our objective is to demonstrate that halal ventures can be ambitious, commercially responsible and rooted in genuine community benefit. Matrimony Manor is our flagship project, supported by complimentary wedding services and a considered pipeline of future ventures built around trust, faith and long-term value.
+        </p>
+        <p>
+          We welcome ethical investors who share this vision: proving that principled investment and purposeful growth can work together to create lasting opportunities for families and communities.
         </p>
 
         <div class="audience-cards">
@@ -2225,10 +2293,10 @@
             <h3>For couples<br/>& <em>families</em></h3>
             <ul>
               <li>Wedding hall</li>
-              <li>Nikah service</li>
-              <li>Wedding cake service</li>
+              <li>Islamic marriage service</li>
+              <li>Pre-marriage Fiqh course</li>
               <li>Chauffeur service</li>
-              <li>Pre-marriage course</li>
+              <li>Cake service</li>
             </ul>
             <a href="#services" class="card-link">Explore Services
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
@@ -2347,15 +2415,48 @@
   <div class="container">
     <div class="services-header">
       <div>
+        <span class="eyebrow">Complimentary Services</span>
+        <h2 class="display-lg">Thoughtful support for every <em>step</em> of the celebration.</h2>
+      </div>
+      <div class="services-intro">
+        <p class="lead">Alongside Matrimony Manor, we offer carefully selected services that help couples prepare, celebrate and begin married life with confidence.</p>
+      </div>
+    </div>
+
+    <div class="complimentary-grid" aria-label="Complimentary services">
+      <article class="complimentary-card">
+        <span class="num">i.</span>
+        <h3>Islamic Marriage Service (Aqd An-Nikah)</h3>
+        <p>A meaningful Islamic marriage ceremony, thoughtfully guided and supported with the right preparation.</p>
+      </article>
+      <article class="complimentary-card">
+        <span class="num">ii.</span>
+        <h3>Pre-Marriage Fiqh Course</h3>
+        <p>Practical Islamic guidance to help couples understand their responsibilities and begin marriage with clarity.</p>
+      </article>
+      <article class="complimentary-card">
+        <span class="num">iii.</span>
+        <h3>Chauffeur Service</h3>
+        <p>Comfortable, coordinated transport designed to make the wedding journey feel calm and seamless.</p>
+      </article>
+      <article class="complimentary-card">
+        <span class="num">iv.</span>
+        <h3>Cake Service</h3>
+        <p>Beautiful celebration cakes created to complement the occasion and the couple's chosen wedding style.</p>
+      </article>
+    </div>
+
+    <div class="nikah-detail-heading">
+      <div>
         <span class="eyebrow">Matrimonial Nikah</span>
-        <h2 class="display-lg">Begin your union with <em>clarity</em> and faith.</h2>
+        <h3>Begin your union with <em>clarity</em> and faith.</h3>
         <a class="services-flyer-link" href="Matrimonial%20Nikah%20(Matrimony%20Ltd).jpg" data-flyer-open aria-haspopup="dialog" aria-controls="nikah-flyer-dialog">
           Matrimonial Nikah (Matrimony Ltd) Flyer
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7"/></svg>
         </a>
       </div>
-      <div class="services-intro">
-        <p class="lead">Our Aqd An-Nikah Service guides couples through a meaningful Islamic marriage ceremony with care, confidence and the right preparation.</p>
+      <div class="nikah-detail-copy">
+        <p>Our Aqd An-Nikah Service guides couples through a meaningful Islamic marriage ceremony with care, confidence and the right preparation.</p>
         <span class="services-availability">Available 7 Days a Week</span>
       </div>
     </div>
@@ -2455,7 +2556,7 @@
         <span class="eyebrow">Halal Investment</span>
         <h2 class="display-lg">Ethical <em>investment</em> in Matrimony Ltd.</h2>
         <p class="lead">
-          Looking for investors with ethical principles to join our mission of revolutionising halal investment through community-centred ventures, including Matrimony Manor and our pipeline of future projects.
+          Looking for investors with ethical principles to join our mission of revolutionising halal investment through community-centred ventures, including Matrimony Manor and our pipeline of future ventures.
         </p>
 
         <div class="investor-headline">
@@ -2467,7 +2568,7 @@
           <a href="#contact" class="btn btn-rust">Submit Investor Enquiry
             <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
           </a>
-          <a href="#projects" class="btn btn-outline-light">View Projects</a>
+          <a href="#future-ventures" class="btn btn-outline-light">Future Ventures</a>
         </div>
 
         <p class="small" style="margin-top: 2rem; color: rgba(244,236,221,0.5); max-width: 500px;">
@@ -2512,57 +2613,46 @@
   </div>
 </section>
 
-<!-- ============ INVESTMENT PROJECTS ============ -->
-<section id="projects" class="projects-section" data-anim>
+<!-- ============ FUTURE VENTURES ============ -->
+<section id="future-ventures" class="projects-section" data-anim>
   <div class="container projects-band">
     <div class="projects-header">
-      <span class="eyebrow center">Investment Projects</span>
-      <h2 class="display-lg">A portfolio of <em>halal</em> ventures.</h2>
-      <p class="lead">Building a pipeline designed around community needs, long-term value and ethical growth.</p>
+      <span class="eyebrow center">Future Ventures</span>
+      <h2 class="display-lg">The next chapter of <em>halal</em> enterprise.</h2>
+      <p class="lead">Three considered ventures shaped around community needs, responsible growth and long-term value.</p>
     </div>
 
     <div class="projects-list">
       <div class="project-row">
         <div class="project-num">i.</div>
         <div class="project-title">
-          <h3>Matrimony <em>Manor</em></h3>
-          <span class="tag">Project 01 · Active</span>
+          <h3>Care <em>Home</em></h3>
+          <span class="tag">Future Venture 01</span>
         </div>
         <div class="project-desc">
-          A multi-purpose wedding and function hall designed to serve Muslim weddings and community celebrations. It is the flagship of Matrimony Ltd's halal venture portfolio.
+          A compassionate care environment centred on comfort, dignity, joy and serenity for older people and their families.
         </div>
       </div>
 
       <div class="project-row">
         <div class="project-num">ii.</div>
         <div class="project-title">
-          <h3>Land <em>Development</em></h3>
-          <span class="tag">Project 02 · In Planning</span>
+          <h3>Franchise <em>Business</em></h3>
+          <span class="tag">Future Venture 02</span>
         </div>
         <div class="project-desc">
-          Acquisition and further development of a parcel of land, presented as a reliable and secure investment opportunity for those looking to enhance their portfolios.
+          Strategic investment in an established franchise model with a proven track record and the potential for responsible, sustainable growth.
         </div>
       </div>
 
       <div class="project-row">
         <div class="project-num">iii.</div>
         <div class="project-title">
-          <h3>Matri<em>Care</em></h3>
-          <span class="tag">Project 03 · Future</span>
+          <h3>Land <em>Development</em></h3>
+          <span class="tag">Future Venture 03</span>
         </div>
         <div class="project-desc">
-          A future haven for elderly care, centred around compassion, comfort, joy, dignity and serenity. Positioned as a community care venture, not just a commercial asset.
-        </div>
-      </div>
-
-      <div class="project-row">
-        <div class="project-num">iv.</div>
-        <div class="project-title">
-          <h3>Franchise <em>Business</em></h3>
-          <span class="tag">Project 04 · Future</span>
-        </div>
-        <div class="project-desc">
-          Strategic investment in a well-established franchise business with a proven track record, designed to secure significant returns and create financial growth opportunities.
+          The acquisition and thoughtful development of land as an ethical, tangible investment opportunity with enduring value.
         </div>
       </div>
     </div>
@@ -2686,17 +2776,7 @@
           <div class="loc">LONDON, ENGLAND</div>
         </div>
         <div class="advisor">
-          <div class="name">Sheikh Khidr Hussain</div>
-          <div class="role">Ethical & Shari'ah Advisor</div>
-          <div class="loc">LONDON, ENGLAND</div>
-        </div>
-        <div class="advisor">
           <div class="name">Ibrahim Khan</div>
-          <div class="role">Ethical & Shari'ah Advisor</div>
-          <div class="loc">LONDON, ENGLAND</div>
-        </div>
-        <div class="advisor">
-          <div class="name">Mufti Walid Hamidi</div>
           <div class="role">Ethical & Shari'ah Advisor</div>
           <div class="loc">LONDON, ENGLAND</div>
         </div>
@@ -2744,7 +2824,7 @@
 
         <div class="faq-item">
           <div class="faq-q">
-            Tell us about the Wedding Cake Service.
+            Tell us about the Cake Service.
             <div class="toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1v10M1 6h10"/></svg></div>
           </div>
           <div class="faq-a">The Cake Service enhances celebrations with delicious, beautifully crafted cakes, including traditional and modern designs that add a sweet touch to weddings and special occasions.</div>
@@ -2776,7 +2856,7 @@
 
         <div class="faq-item">
           <div class="faq-q">
-            How does the future MatriCare project ensure compassionate care?
+            How will the future Care Home venture support compassionate care?
             <div class="toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1v10M1 6h10"/></svg></div>
           </div>
           <div class="faq-a">The future care home project is designed to provide a caring and supportive environment for seniors, creating a home-like atmosphere focused on wellbeing, dignity and comfort.</div>
@@ -2827,7 +2907,7 @@
             <option>Wedding Hall / Matrimony Manor Booking</option>
             <option>Islamic Marriage Contract Signing (Aqd An-Nikah)</option>
             <option>Pre-Marriage Fiqh Course</option>
-            <option>Wedding Cake Service</option>
+            <option>Cake Service</option>
             <option>Chauffeur Service</option>
             <option>Investor Enquiry</option>
             <option>General Enquiry</option>
@@ -2891,10 +2971,9 @@
       </div>
 
       <div class="footer-col">
-        <h5>Wedding</h5>
+        <h5>Complimentary Services</h5>
         <ul>
-          <li><a href="#manor">Matrimony Manor</a></li>
-          <li><a href="#services">Pre-Marriage Course</a></li>
+          <li><a href="#services">Pre-Marriage Fiqh Course</a></li>
           <li><a href="#services">Nikah Service</a></li>
           <li><a href="#services">Cake Service</a></li>
           <li><a href="#services">Chauffeur Service</a></li>
@@ -2906,7 +2985,7 @@
         <ul>
           <li><a href="#investor">Investor Overview</a></li>
           <li><a href="#investor">Investor Benefits</a></li>
-          <li><a href="#projects">Investment Projects</a></li>
+          <li><a href="#future-ventures">Future Ventures</a></li>
           <li><a href="#contact">Become an Investor</a></li>
         </ul>
       </div>
@@ -2918,7 +2997,6 @@
           <li><a href="#team">Team</a></li>
           <li><a href="#faq">FAQs</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#projects">Partnerships</a></li>
         </ul>
       </div>
     </div>
